@@ -1,0 +1,79 @@
+.app {
+  display: flex;
+  overflow-y: auto;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(82, 82, 82, 0.301);
+  height: 100;
+  width: 240px;
+  align-items: center;
+}
+
+.title {
+  margin: 0px;
+  margin-top: 15px;
+}
+
+.dashboard-button {
+  margin: 0px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1074px;
+}
+
+.summarization {
+  display: flex;
+  margin: 0px;
+  margin-top: 40px;
+  width: 900px;
+  height: 200px;
+  gap: 20px;
+}
+
+.max-temp {
+  background-color: rgba(82, 82, 82, 0.301);
+  width: 286px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.min-temp {
+  background-color: rgba(82, 82, 82, 0.301);
+  width: 286px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.num-days {
+  background-color: rgba(82, 82, 82, 0.301);
+  width: 286px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.dashboard {
+  background-color: rgba(82, 82, 82, 0.301);
+  height: 100vh;
+  width: 900px;
+  margin: 0px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
