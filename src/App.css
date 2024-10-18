@@ -86,7 +86,16 @@
   gap: 10px;
   justify-content: center;
 }
+
 .search {
+  margin: 0px;
+  margin-top: 15px;
+  height: 20px;
+}
+
+.check-group {
+  display: flex;
+  gap: 10px;
   margin: 0px;
   margin-top: 15px;
 }
