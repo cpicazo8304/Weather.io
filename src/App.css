@@ -71,9 +71,34 @@
 
 .dashboard {
   background-color: rgba(82, 82, 82, 0.301);
-  height: 100vh;
+  height: 77vh;
   width: 900px;
   margin: 0px;
   margin-top: 20px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.search {
+  margin: 0px;
+  margin-top: 15px;
+}
+
+.data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0px;
+  margin: 20px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
 }
