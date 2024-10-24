@@ -11,6 +11,8 @@ function App() {
   const [ranges, setRanges] = useState([]);
   const [date, setDate] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
+  const [upperLimits, setUpperLimits] = useState([]);
+  const [lowerLimits, setLowerLimits] = useState([]);
 
   useEffect(() => {
     const fetchAPIData = async () => {
@@ -39,14 +41,17 @@ function App() {
   // Filter results based on date and temperature range
   useEffect(() => {
     const filteredData = dates.reduce((acc, currentDate, index) => {
-      const isDateMatch = currentDate === date || date === '';
-      const isRangeMatch = (
-        (maxTemperatures[index] >= 50 && maxTemperatures[index] <= 70) ||
-        (maxTemperatures[index] >= 70 && maxTemperatures[index] <= 90) ||
-        (maxTemperatures[index] >= 90 && maxTemperatures[index] <= 100)
-      );
+      const isDateMatch = currentDate === date || date === ''; // either user inputted a date or no date
+
+      const isRangeMatch = upperLimits.length === 0 && lowerLimits.length === 0 // return all data if no filters
+        ? true
+        : upperLimits.some((limit, i) =>
+          (maxTemperatures[index] >= lowerLimits[i] && maxTemperatures[index] <= limit) ||
+          (minTemperatures[index] >= lowerLimits[i] && minTemperatures[index] <= limit)
+        );
 
       if (isDateMatch && isRangeMatch) {
+        //  current record follows true for the filters, so include them in the records that will be shown
         acc.push({
           date: currentDate,
           max: maxTemperatures[index],
@@ -57,8 +62,9 @@ function App() {
       return acc;
     }, []);
     
+    // update shown results
     setFilteredResults(filteredData);
-  }, [dates, maxTemperatures, minTemperatures, ranges, date]);
+  }, [dates, maxTemperatures, minTemperatures, ranges, upperLimits, lowerLimits, date]);
 
   return (
     <div className='app'>
@@ -97,11 +103,21 @@ function App() {
                   type='checkbox'
                   onChange={(e) => {
                     const isChecked = e.target.checked;
-                    setFilteredResults((prevResults) =>
-                      prevResults.filter(result =>
-                        isChecked ? (result.max >= 50 && result.max <= 70) : result
-                      )
-                    );
+                    if (isChecked)
+                    {
+                      // set the lower and upper limits for the results to be filted by
+                      // any temperature within these limits will show up in the dashboard
+                      // remove the original temperatures where everything shows up so you can
+                      // only have filtered results.
+                      setLowerLimits((prevLimits) => [...prevLimits, 50]);
+                      setUpperLimits((prevLimits) => [...prevLimits, 70]);
+                    }
+                    else
+                    {
+                      // remove these limits so that the result will not be filtered by them
+                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 50));
+                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 70));
+                    }
                   }}
                 />
                 50°F - 70°F
@@ -112,11 +128,21 @@ function App() {
                   type='checkbox'
                   onChange={(e) => {
                     const isChecked = e.target.checked;
-                    setFilteredResults((prevResults) =>
-                      prevResults.filter(result =>
-                        isChecked ? (result.max >= 70 && result.max <= 90) : result
-                      )
-                    );
+                    if (isChecked)
+                    {
+                      // set the lower and upper limits for the results to be filted by
+                      // any temperature within these limits will show up in the dashboard
+                      // remove the original temperatures where everything shows up so you can
+                      // only have filtered results.
+                      setLowerLimits((prevLimits) => [...prevLimits, 70]);
+                      setUpperLimits((prevLimits) => [...prevLimits, 90]);
+                    }
+                    else
+                    {
+                      // remove these limits so that the result will not be filtered by them
+                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 70));
+                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 90));
+                    }
                   }}
                 />
                 70°F - 90°F
@@ -127,11 +153,21 @@ function App() {
                   type='checkbox'
                   onChange={(e) => {
                     const isChecked = e.target.checked;
-                    setFilteredResults((prevResults) =>
-                      prevResults.filter(result =>
-                        isChecked ? (result.max >= 90 && result.max <= 100) : result
-                      )
-                    );
+                    if (isChecked)
+                    {
+                      // set the lower and upper limits for the results to be filted by
+                      // any temperature within these limits will show up in the dashboard
+                      // remove the original temperatures where everything shows up so you can
+                      // only have filtered results.
+                      setLowerLimits((prevLimits) => [...prevLimits, 90]);
+                      setUpperLimits((prevLimits) => [...prevLimits, 100]);
+                    }
+                    else
+                    {
+                      // remove these limits so that the result will not be filtered by them
+                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 90));
+                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 100));
+                    }
                   }}
                 />
                 90°F - 100°F
