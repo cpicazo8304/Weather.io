@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Dashboard from "./routes/Dashboard";
 import DetailView from './routes/DetailView';
+import NotFound from './routes/NotFound'
 import { useRoutes } from "react-router-dom";
-
 import './App.css';
 
 function App() {
@@ -41,6 +41,10 @@ function App() {
         path: '/:date',  // Dynamic route for the date
         element: <DetailView weatherData={weatherData} />
       },
+      {
+        path:"*",
+        element: <NotFound />
+      }
     ])
   return (
     <div>

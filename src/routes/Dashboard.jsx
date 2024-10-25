@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import TemperatureChart from '../components/TemperatureChart'
 
 function Dashboard() {
   const [dates, setDates] = useState([]);
@@ -84,114 +85,129 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className='dashboard'>
-          <div className='filter'>
-            <input
-              type='text'
-              placeholder='Enter Date (YYYY-MM-DD)'
-              onChange={(e) => { setDate(e.target.value); }}
-              className='search'
-            />
-            <div className="check-group">
-              <label>
+        <div className="information">
+            <div className='dashboard'>
+            <div className='filter'>
                 <input
-                  type='checkbox'
-                  onChange={(e) => {
-                    const isChecked = e.target.checked;
-                    if (isChecked)
-                    {
-                      // set the lower and upper limits for the results to be filted by
-                      // any temperature within these limits will show up in the dashboard
-                      // remove the original temperatures where everything shows up so you can
-                      // only have filtered results.
-                      setLowerLimits((prevLimits) => [...prevLimits, 50]);
-                      setUpperLimits((prevLimits) => [...prevLimits, 70]);
-                    }
-                    else
-                    {
-                      // remove these limits so that the result will not be filtered by them
-                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 50));
-                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 70));
-                    }
-                  }}
+                type='text'
+                placeholder='Enter Date (YYYY-MM-DD)'
+                onChange={(e) => { setDate(e.target.value); }}
+                className='search'
                 />
-                50°F - 70°F
-              </label>
+                <div className="check-group">
+                <label>
+                    <input
+                    type='checkbox'
+                    onChange={(e) => {
+                        const isChecked = e.target.checked;
+                        if (isChecked)
+                        {
+                        // set the lower and upper limits for the results to be filted by
+                        // any temperature within these limits will show up in the dashboard
+                        // remove the original temperatures where everything shows up so you can
+                        // only have filtered results.
+                        setLowerLimits((prevLimits) => [...prevLimits, 50]);
+                        setUpperLimits((prevLimits) => [...prevLimits, 70]);
+                        }
+                        else
+                        {
+                        // remove these limits so that the result will not be filtered by them
+                        setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 50));
+                        setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 70));
+                        }
+                    }}
+                    />
+                    50°F - 70°F
+                </label>
 
-              <label>
-                <input
-                  type='checkbox'
-                  onChange={(e) => {
-                    const isChecked = e.target.checked;
-                    if (isChecked)
-                    {
-                      // set the lower and upper limits for the results to be filted by
-                      // any temperature within these limits will show up in the dashboard
-                      // remove the original temperatures where everything shows up so you can
-                      // only have filtered results.
-                      setLowerLimits((prevLimits) => [...prevLimits, 70]);
-                      setUpperLimits((prevLimits) => [...prevLimits, 90]);
-                    }
-                    else
-                    {
-                      // remove these limits so that the result will not be filtered by them
-                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 70));
-                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 90));
-                    }
-                  }}
-                />
-                70°F - 90°F
-              </label>
+                <label>
+                    <input
+                    type='checkbox'
+                    onChange={(e) => {
+                        const isChecked = e.target.checked;
+                        if (isChecked)
+                        {
+                        // set the lower and upper limits for the results to be filted by
+                        // any temperature within these limits will show up in the dashboard
+                        // remove the original temperatures where everything shows up so you can
+                        // only have filtered results.
+                        setLowerLimits((prevLimits) => [...prevLimits, 70]);
+                        setUpperLimits((prevLimits) => [...prevLimits, 90]);
+                        }
+                        else
+                        {
+                        // remove these limits so that the result will not be filtered by them
+                        setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 70));
+                        setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 90));
+                        }
+                    }}
+                    />
+                    70°F - 90°F
+                </label>
 
-              <label>
-                <input
-                  type='checkbox'
-                  onChange={(e) => {
-                    const isChecked = e.target.checked;
-                    if (isChecked)
-                    {
-                      // set the lower and upper limits for the results to be filted by
-                      // any temperature within these limits will show up in the dashboard
-                      // remove the original temperatures where everything shows up so you can
-                      // only have filtered results.
-                      setLowerLimits((prevLimits) => [...prevLimits, 90]);
-                      setUpperLimits((prevLimits) => [...prevLimits, 100]);
-                    }
-                    else
-                    {
-                      // remove these limits so that the result will not be filtered by them
-                      setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 90));
-                      setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 100));
-                    }
-                  }}
-                />
-                90°F - 100°F
-              </label>
+                <label>
+                    <input
+                    type='checkbox'
+                    onChange={(e) => {
+                        const isChecked = e.target.checked;
+                        if (isChecked)
+                        {
+                        // set the lower and upper limits for the results to be filted by
+                        // any temperature within these limits will show up in the dashboard
+                        // remove the original temperatures where everything shows up so you can
+                        // only have filtered results.
+                        setLowerLimits((prevLimits) => [...prevLimits, 90]);
+                        setUpperLimits((prevLimits) => [...prevLimits, 100]);
+                        }
+                        else
+                        {
+                        // remove these limits so that the result will not be filtered by them
+                        setLowerLimits((prevLimits) => prevLimits.filter(item => item !== 90));
+                        setUpperLimits((prevLimits) => prevLimits.filter(item => item !== 100));
+                        }
+                    }}
+                    />
+                    90°F - 100°F
+                </label>
+                </div>
             </div>
-          </div>
 
-          <table className='data'>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Max Temperature (°F)</th>
-                <th>Min Temperature (°F)</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredResults.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.date}</td>
-                  <td>{item.max}</td>
-                  <td>{item.min}</td>
-                  <td>
-                    <Link to={`/${item.date}`} className='detail-link'>🔗</Link> {/* Link to DetailView */}
-                  </td>
+            <table className='data'>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Max Temperature (°F)</th>
+                    <th>Min Temperature (°F)</th>
+                    <th>Details</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                {filteredResults.map((item, index) => (
+                    <tr key={index}>
+                    <td>{item.date}</td>
+                    <td>{item.max}</td>
+                    <td>{item.min}</td>
+                    <td>
+                        <Link to={`/${item.date}`} className='detail-link'>🔗</Link> {/* Link to DetailView */}
+                    </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            </div>
+            
+            <div className='charts'>
+                <div className='max-chart'>
+                    <h4 className='max-chart-title'>Max Temperatures: </h4>
+                    <TemperatureChart dates={dates}  temperatures={maxTemperatures} name="Max Temperature"/>
+                </div>
+
+                <div className='min-chart'>
+                <h4 className='min-chart-title'>Min Temperatures: </h4>
+                    <TemperatureChart dates={dates}  temperatures={minTemperatures} name="Min Temperature"/>
+                </div>
+
+            </div>
         </div>
       </div>
     </div>
