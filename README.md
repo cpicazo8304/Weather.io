@@ -1,33 +1,26 @@
-# Web Development Project 5 - *Weather.io*
+# Web Development Project 6 - *Weather.io*
 
 Submitted by: **Cesar Picazo**
 
-This web app: **Look over the past 20 days of weather in Austin, Texas! You can see the minimum and maximum temperatures!**
+This web app: **For October 1, 2024 to October 20, 2024, the dashboard showcases the max and min temperatures for each day that was gotten from [Open Meteo API](https://open-meteo.com/). Additionally, each day, has a link to extra details about the weather. There is a line charts that showcase the max and min temperatures over a time period (20 days).**
 
-Time spent: **5** hours spent in total
+Time spent: **6** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The list displays a list of data fetched using an API call**
-- [x] **Data uses the useEffect React hook and async/await syntax**
-- [x] **The app dashboard includes at least three summary statistics about the data such as**
-  - [x] *insert details*
-- [x] **A search bar allows the user to search for an item in the fetched data**
-- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
-
-The following **optional** features are implemented:
-
-- [x] Multiple filters can be applied simultaneously
-- [x] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [x] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
+- [x] **Clicking on an item in the list view displays more details about it**
+  - [x] To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.
+- [x] **Clicking on an item has a direct, unique link to that item's detail view page**
+  - [x] To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.  
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-[Download GIF](https://submissions.us-east-1.linodeobjects.com/web102/JgMfcOkt.gif)
+[Download GIF](https://submissions.us-east-1.linodeobjects.com/web102/4xyRpRVX.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/)
